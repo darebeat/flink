@@ -25,11 +25,15 @@ mvn clean package -Dmaven.test.skip=true
 ## 运行
 
 ```sh
-# 监控9000端口
-nc -l 9000
-flink run -c org.darebeat.wordcount.SocketTextStreamWordCount ./target/SocketTextStreamWordCount-1.0-SNAPSHOT.jar 127.0.0.1 9000
-# 查看flink版本以及位置信息
-brew info apache-flink
-# 查看日志,输出统计结果
-tail -f libexec/log/flink-$(whoami)-taskexecutor-0-$(whoami).out
+# 在edge监控9000端口
+docker exec -it flink-edge nc -l 9000
+
+docker exec -it flink-jobmanager flink run \
+-c org.darebeat.wordcount.SocketTextStreamWordCount \
+/opt/flink/src/flink-streaming/target/original-flink-streaming-1.0-SNAPSHOT.jar \
+172.18.0.100 9000
 ```
+
+## 在对应task-manager Stdout中查看日志
+
+[http://localhost:8081/#/task-manager](http://localhost:8081/#/task-manager)

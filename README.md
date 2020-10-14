@@ -11,6 +11,13 @@
 </mirror>
 ```
 
+## 通过docker-compose运行flink环境
+
+```sh
+docker-compose up -d
+docker-compose down -v
+```
+
 ## kafka 基础命令
 
 ```sh
