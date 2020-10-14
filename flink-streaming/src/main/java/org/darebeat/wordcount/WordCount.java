@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.darebeat.wordcount.util;
+package org.darebeat.wordcount;
 
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.java.tuple.Tuple2;
