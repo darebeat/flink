@@ -1,0 +1,28 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: flink-mysql
+    hostname: mysql
+    restart: always
+    networks:
+      deploy:
+        ipv4_address: 172.10.0.4
+        aliases:
+          - mysql
+    ports:
+      - "13306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysql
+      - MYSQL_USER=darebeat
+      - MYSQL_PASSWORD=mydbsys 
+      - MYSQL_DATABASE=test
+      # - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    security_opt:
+      - seccomp:unconfined
+    volumes:
+      - ./config/mysql-config/my.cnf:/etc/my.cnf
+
+networks:
+  deploy:
+    external: true

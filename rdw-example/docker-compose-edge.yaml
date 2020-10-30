@@ -1,0 +1,21 @@
+version: '3'
+services:
+  edge:
+    image: darebeat/netcat:latest
+    command: tail -f /entrypoint.sh
+    container_name: flink-edge
+    hostname: edge
+    networks:
+      deploy:
+        ipv4_address: 172.10.0.100
+        aliases:
+          - edge
+    # extra_hosts:
+    #   - "jobmanager:172.10.0.2"
+    #   - "taskmanager:172.10.0.3"
+    ports:
+      - "9000:9000"
+
+networks:
+  deploy:
+    external: true
