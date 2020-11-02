@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.darebeat.wordcount;
+package org.darebeat.streaming.wordcount;
 
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.java.tuple.Tuple2;
@@ -24,7 +24,7 @@ import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.util.Collector;
 import org.apache.flink.util.Preconditions;
-import org.darebeat.wordcount.util.WordCountData;
+import org.darebeat.streaming.wordcount.util.WordCountData;
 
 /**
  * Implements the "WordCount" program that computes a simple word occurrence

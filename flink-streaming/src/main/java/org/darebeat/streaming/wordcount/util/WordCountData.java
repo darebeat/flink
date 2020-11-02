@@ -1,4 +1,4 @@
-package org.darebeat.wordcount.util;
+package org.darebeat.streaming.wordcount.util;
 
 /**
  * Created by darebeat on 2020/9/25.

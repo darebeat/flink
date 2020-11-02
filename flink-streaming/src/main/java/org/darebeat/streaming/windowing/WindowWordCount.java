@@ -1,11 +1,11 @@
-package org.darebeat.windowing;
+package org.darebeat.streaming.windowing;
 
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
-import org.darebeat.wordcount.WordCount;
-import org.darebeat.wordcount.util.WordCountData;
+import org.darebeat.streaming.wordcount.WordCount;
+import org.darebeat.streaming.wordcount.util.WordCountData;
 
 /**
  * Created by darebeat on 2020/9/25.

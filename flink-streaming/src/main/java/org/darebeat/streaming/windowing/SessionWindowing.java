@@ -1,4 +1,4 @@
-package org.darebeat.windowing;
+package org.darebeat.streaming.windowing;
 
 /**
  * Created by darebeat on 2020/9/25.

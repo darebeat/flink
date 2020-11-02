@@ -1,4 +1,4 @@
-package org.darebeat.windowing;
+package org.darebeat.streaming.windowing;
 
 import org.apache.flink.api.common.functions.RichMapFunction;
 import org.apache.flink.api.java.tuple.Tuple4;

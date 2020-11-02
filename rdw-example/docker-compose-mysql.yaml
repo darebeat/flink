@@ -14,8 +14,8 @@ services:
       - "13306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=mysql
-      - MYSQL_USER=darebeat
-      - MYSQL_PASSWORD=mydbsys 
+      - MYSQL_USER=canal
+      - MYSQL_PASSWORD=canal 
       - MYSQL_DATABASE=test
       # - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     security_opt:

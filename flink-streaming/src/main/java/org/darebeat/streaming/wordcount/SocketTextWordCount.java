@@ -1,4 +1,4 @@
-package org.darebeat.wordcount;
+package org.darebeat.streaming.wordcount;
 
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.java.tuple.Tuple2;
