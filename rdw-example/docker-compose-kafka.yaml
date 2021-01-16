@@ -24,9 +24,6 @@ services:
         ipv4_address: 172.10.0.9
         aliases:
           - kafka
-    # extra_hosts:
-    #   - "jobmanager:172.10.0.2"
-    #   - "taskmanager:172.10.0.3"
     ports:
       - 9092:9092
     environment:

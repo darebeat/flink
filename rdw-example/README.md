@@ -105,7 +105,7 @@ create table mysql_app_wide_stuff(
     base_location varchar(20),
     stuff_name varchar(20)
 ) WITH (
-	'connector'  = 'jdbc',
+    'connector'  = 'jdbc',
     'driver'     = 'com.mysql.cj.jdbc.Driver',
     'url'        = 'jdbc:mysql://mysql:3306/test?rewriteBatchedStatements=true',
     'table-name' = 'app_wide_stuff',
@@ -303,7 +303,7 @@ create table sink (
     name varchar(10),
     mysql_create_time timestamp(6)
 ) WITH (
-	'connector' = 'jdbc', 
+    'connector' = 'jdbc', 
     'driver' = 'com.mysql.cj.jdbc.Driver',
     'username' = 'root', 
     'password' = '',
@@ -356,7 +356,7 @@ create table mysql_sink (
     id int primary key,
     name varchar(10)
 ) WITH (
-	'connector' = 'jdbc', 
+    'connector' = 'jdbc', 
     'driver' = 'com.mysql.cj.jdbc.Driver',
     'username' = 'root', 
     'password' = '',
@@ -437,7 +437,7 @@ create table wide_stuff(
     base_location varchar(20),
     stuff_name varchar(20)
 ) WITH (
-	'connector' = 'jdbc', 
+    'connector' = 'jdbc', 
     'driver' = 'com.mysql.cj.jdbc.Driver',
     'username' = 'root', 
     'password' = '',

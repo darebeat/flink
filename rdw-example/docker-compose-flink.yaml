@@ -1,7 +1,7 @@
 version: '3'
 services:
   jobmanager:
-    image: flink:${FLINK_VERSION:-1.11.2-scala_2.11}
+    image: darebeat/flink:${FLINK_VERSION:-1.12.0-scala_2.11}
     container_name: flink-jobmanager
     hostname: jobmanager
     networks:
@@ -9,33 +9,27 @@ services:
         ipv4_address: 172.10.0.2
         aliases:
           - jobmanager
-    # extra_hosts:
-    #   - "taskmanager:172.10.0.3"
-    #   - "zookeeper:172.10.0.8"
-    #   - "kafka:172.10.0.9"
     expose:
       - "6123"
     ports:
       - "8081:8081"
-    command: jobmanager
-    # command:
-    #   - bash
-    #   - -c
-    #   - |
-    #     sed -i 's/start-foreground/start/g' /docker-entrypoint.sh
-    #     /docker-entrypoint.sh jobmanager 
-    #     touch /opt/flink/log/flink-keep-jobmanager.log
-    #     tail -f /opt/flink/log/*
+    # command: jobmanager # 如果用这种方式启动,查看输出结果需要在运行的容器中查看
+    command:
+      - bash
+      - -c
+      - |
+        sed -i 's/start-foreground/start/g' /docker-entrypoint.sh
+        /docker-entrypoint.sh jobmanager
+        tail -f /docker-entrypoint.sh
     environment:
       - |
         FLINK_PROPERTIES=
         jobmanager.rpc.address: jobmanager
     volumes:
-      # - ./logs/jobmanager/:/opt/flink/log/
       - ./config/flink-jars/:/opt/flink/connector-lib/
 
   taskmanager:
-    image: flink:${FLINK_VERSION:-1.11.2-scala_2.11}
+    image: darebeat/flink:${FLINK_VERSION:-1.12.0-scala_2.11}
     container_name: flink-taskmanager
     hostname: taskmanager
     networks:
@@ -43,32 +37,25 @@ services:
         ipv4_address: 172.10.0.3
         aliases:
           - taskmanager
-    # extra_hosts:
-    #   - "jobmanager:172.10.0.2"
-    #   - "zookeeper:172.10.0.8"
-    #   - "kafka:172.10.0.9"
     expose:
       - "6121"
       - "6122"
     depends_on:
       - jobmanager
-    command: taskmanager
-    # command:
-    #   - bash
-    #   - -c
-    #   - |
-    #     sed -i 's/start-foreground/start/g' /docker-entrypoint.sh
-    #     /docker-entrypoint.sh taskmanager 
-    #     touch /opt/flink/log/flink-keep-taskmanager.log
-    #     tail -f /opt/flink/log/*
+    # command: taskmanager # 如果用这种方式启动,查看输出结果需要在运行的容器中查看
+    command:
+      - bash
+      - -c
+      - |
+        sed -i 's/start-foreground/start/g' /docker-entrypoint.sh
+        /docker-entrypoint.sh taskmanager
+        tail -f /docker-entrypoint.sh
     scale: 1
     environment:
       - |
         FLINK_PROPERTIES=
         jobmanager.rpc.address: jobmanager
         taskmanager.numberOfTaskSlots: 8
-    # volumes:
-    #   - ./logs/taskmanager/:/opt/flink/log/
 
 networks:
   deploy:

@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 /**
  * Created by darebeat on 2020/11/1.
  */
-public class MySQLUtil extends RichSourceFunction<Student> {
+public class MySQLSourceUtil extends RichSourceFunction<Student> {
     PreparedStatement ps;
     private Connection connection;
 
@@ -38,7 +38,7 @@ public class MySQLUtil extends RichSourceFunction<Student> {
     @Override
     public void open(Configuration parameters) throws Exception {
         super.open(parameters);
-        connection = MySQLUtil.getConnection("com.mysql.jdbc.Driver",
+        connection = MySQLSourceUtil.getConnection("com.mysql.jdbc.Driver",
                 "jdbc:mysql://127.0.0.1:13306/test?useUnicode=true&characterEncoding=UTF-8",
                 "root",
                 "mysql");

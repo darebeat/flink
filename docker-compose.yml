@@ -1,18 +1,18 @@
 version: "3"
 services:
   jobmanager:
-    image: flink:${FLINK_VERSION:-1.11.2-scala_2.11}
+    image: darebeat/flink:${FLINK_VERSION:-1.12.0-scala_2.11}
     container_name: flink-jobmanager
     hostname: jobmanager
     networks:
-      flink:
-        ipv4_address: 172.18.0.2
+      deploy:
+        ipv4_address: 172.10.0.2
         aliases:
           - jobmanager
     extra_hosts:
-      - "taskmanager:172.18.0.3"
-      - "zookeeper:172.18.0.4"
-      - "kafka:172.18.0.5"
+      - "taskmanager:172.10.0.3"
+      - "zookeeper:172.10.0.8"
+      - "kafka:172.10.0.9"
     ports:
       - "8081:8081"
     command:
@@ -30,18 +30,18 @@ services:
       - .:/opt/flink/src
 
   taskmanager:
-    image: flink:${FLINK_VERSION:-1.11.2-scala_2.11}
+    image: darebeat/flink:${FLINK_VERSION:-1.12.0-scala_2.11}
     container_name: flink-taskmanager
     hostname: taskmanager
     networks:
-      flink:
-        ipv4_address: 172.18.0.3
+      deploy:
+        ipv4_address: 172.10.0.3
         aliases:
           - taskmanager
     extra_hosts:
-      - "jobmanager:172.18.0.2"
-      - "zookeeper:172.18.0.4"
-      - "kafka:172.18.0.5"
+      - "jobmanager:172.10.0.2"
+      - "zookeeper:172.10.0.8"
+      - "kafka:172.10.0.9"
     depends_on:
       - jobmanager
     command:
@@ -65,14 +65,14 @@ services:
     container_name: flink-zookeeper
     hostname: zookeeper
     networks:
-      flink:
-        ipv4_address: 172.18.0.4
+      deploy:
+        ipv4_address: 172.10.0.8
         aliases:
           - zookeeper
     extra_hosts:
-      - "jobmanager:172.18.0.2"
-      - "taskmanager:172.18.0.3"
-      - "kafka:172.18.0.5"
+      - "jobmanager:172.10.0.2"
+      - "taskmanager:172.10.0.3"
+      - "kafka:172.10.0.9"
     ports:
       - 2181:2181
        
@@ -81,14 +81,14 @@ services:
     container_name: flink-kafka
     hostname: kafka
     networks:
-      flink:
-        ipv4_address: 172.18.0.5
+      deploy:
+        ipv4_address: 172.10.0.9
         aliases:
           - kafka
     extra_hosts:
-      - "jobmanager:172.18.0.2"
-      - "taskmanager:172.18.0.3"
-      - "zookeeper:172.18.0.4"
+      - "jobmanager:172.10.0.2"
+      - "taskmanager:172.10.0.3"
+      - "zookeeper:172.10.0.8"
     ports:
       - 9092:9092
     environment:
@@ -106,23 +106,26 @@ services:
     container_name: flink-edge
     hostname: edge
     networks:
-      flink:
-        ipv4_address: 172.18.0.100
+      deploy:
+        ipv4_address: 172.10.0.100
         aliases:
           - edge
     extra_hosts:
-      - "jobmanager:172.18.0.2"
-      - "taskmanager:172.18.0.3"
+      - "jobmanager:172.10.0.2"
+      - "taskmanager:172.10.0.3"
     ports:
       - "9000:9000"
 
 networks:
-  flink:
-    driver: bridge
-    driver_opts:
-      com.docker.network.enable_ipv6: "false"
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.18.0.0/16
-          gateway: 172.18.0.1
+  deploy:
+    external: true
+# networks:
+#   deploy:
+#     driver: bridge
+#     driver_opts:
+#       com.docker.network.enable_ipv6: "false"
+#     ipam:
+#       driver: default
+#       config:
+#         - subnet: 172.10.0.0/16
+#           gateway: 172.10.0.1
