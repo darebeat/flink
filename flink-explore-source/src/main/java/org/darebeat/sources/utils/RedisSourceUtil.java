@@ -8,8 +8,17 @@ import redis.clients.jedis.exceptions.JedisConnectionException;
 import java.util.HashMap;
 import java.util.Map;
 
+
 /**
- * Created by darebeat on 2020/11/3.
+ *
+ * 在redis中保存的有国家和大区的关系
+ * hset  areas AREA_US US
+ * hset  areas AREA_CT TW,HK
+ * hset  areas AREA_AR PK,KW,SA
+ * hset  areas AREA_IN IN
+ *./bin/kafka-console-consumer.sh --bootstrap-server 127.0.0.1:9092 --topic allDataClean--from-beginning
+ *
+ * 我们需要返回kv对的，就要考虑HashMap
  */
 @Slf4j
 public class RedisSourceUtil implements SourceFunction<HashMap<String,String>> {

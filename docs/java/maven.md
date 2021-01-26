@@ -1,4 +1,4 @@
-# Maven
+# Maven 基础
 
 Maven是基于项目对象模型(POM project object model)，可以通过一小段描述信息（配置）来管理项目的构建，报告和文档的软件项目管理工具
 
@@ -6,16 +6,16 @@ Maven是基于项目对象模型(POM project object model)，可以通过一小�
 + 通过pom.xml文件的配置获取jar包，而不用手动去添加jar包
 
 
-#### 仓库
+## 仓库
 
 仓库分为：本地仓库、第三方仓库(私服)、中央仓库。
 
-+ 本地仓库
+### 本地仓库
 
 >Maven会将工程中依赖的构件(Jar包)从远程下载到本机一个目录下管理，每个电脑默认的仓库是在 $user.home/.m2/repository
 >修改本地库位置：在$MAVEN_HOME/conf/setting.xml文件中修改
 
-+ 第三方仓库
+### 第三方仓库
 
 第三方仓库，又称为内部中心仓库，也称为私服。
 
@@ -27,7 +27,7 @@ Maven是基于项目对象模型(POM project object model)，可以通过一小�
 注意：连接私服，需要单独配置。如果没有配置私服，默认不使。
 ```
 
-+ 中央仓库
+### 中央仓库
 
 工程依赖的jar包如果本地仓库没有，默认从中央仓库下载
 
@@ -37,7 +37,7 @@ Maven是基于项目对象模型(POM project object model)，可以通过一小�
 （2）没有配置私服的话，直接从中央残酷中获取，步骤同上。
 ```
 
-#### Maven基本命令
+## Maven基本命令
 
 
 + -v:查询Maven版本
@@ -64,44 +64,44 @@ Maven安装完成之后，在命令行输入mvn -v，若出现maven信息，则�
 将当前项目放到Maven的本地仓库中。供其他项目使用
 
 
-#### Maven项目结构
+## Maven项目结构
 
 ```
 project 项目名称
-	--- pom.xml 核心配置,项目根目录下
-	--- src
-		--- main
-			--- java	java源码目录
-			--- resource java配置文件目录
-		--- test
-			--- java	java测试源码目录
-			--- resource java测试配置文件目录
-	--- target 输出目录
+  |___ pom.xml 核心配置,项目根目录下
+  |___ src
+    |___ main
+      |___ java  java源码目录
+      |___ resource java配置文件目录
+    |___ test
+      |___ java  java测试源码目录
+      |___ resource java测试配置文件目录
+  |___ target 输出目录
 ```
 
-#### Maven 属性说明
+## Maven 属性说明
 
 + groupId Jar包的项目名
 + artifactId Jar包的模块名
 + version Jar包的版本号
 + packaging 打包类型 jar/pom/war
 + scope jar包的作用范围
-	在项目发布过程中，帮助决定哪些构件被包括进来。欲知详情请参考依赖机制。    
-	- compile ：默认范围，用于编译      
-	- provided：类似于编译，但支持你期待jdk或者容器提供，类似于classpath      
-	- runtime: 在执行时需要使用      
-	- test:    用于test任务时使用      
-	- system: 需要外在提供相应的元素。通过systemPath来取得      
-	- systemPath: 仅用于范围为system。提供相应的路径      
-	- optional:   当项目自身被依赖时，标注依赖是否传递。用于连续依赖时使用
+  在项目发布过程中，帮助决定哪些构件被包括进来。欲知详情请参考依赖机制。    
+  - compile ：默认范围，用于编译      
+  - provided：类似于编译，但支持你期待jdk或者容器提供，类似于classpath      
+  - runtime: 在执行时需要使用      
+  - test:    用于test任务时使用      
+  - system: 需要外在提供相应的元素。通过systemPath来取得      
+  - systemPath: 仅用于范围为system。提供相应的路径      
+  - optional:   当项目自身被依赖时，标注依赖是否传递。用于连续依赖时使用
 
-#### 聚合
+## 聚合
 
-+ 1. 什么是聚合？
++ 1.什么是聚合？
 
 将多个项目同时运行就称为聚合。
 
-+ 2. 如何实现聚合？
++ 2.如何实现聚合？
 
 只需在pom中作如下配置即可实现聚合：
 
@@ -112,13 +112,13 @@ project 项目名称
 </modules>
 ```
 
-#### 继承
+## 继承
 
-+ 1. 什么是继承？
++ 1.什么是继承？
 
 在聚合多个项目时，如果这些被聚合的项目中需要引入相同的Jar，那么可以将这些Jar写入父pom中，各个子项目继承该pom即可。
 
-+ 2. 如何实现继承？
++ 2.如何实现继承？
 
 父pom配置：将需要继承的Jar包的坐标放入标签即可。
 
@@ -149,7 +149,7 @@ project 项目名称
 </parent>
 ```
 
-#### pom.xml详解
+## pom.xml详解
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -444,10 +444,10 @@ POM就可以在每个单独的仓库中，为每种类型的构件采取不同�
     <snapshotRepository> 
       <uniqueVersion/>  
       <id>banseon-maven2</id>  
-      <name>Banseon-maven2 Snapshot Repository</name>  
-      <url>scp://svn.baidu.com/banseon:/usr/local/maven-snapshot</url>  
+      <name>Banseon-maven2 Snapshot Repository</name>
+      <url>scp://svn.baidu.com/banseon:/usr/local/maven-snapshot</url>
       <layout/> 
-    </snapshotRepository>  
+    </snapshotRepository>
     <!--部署项目的网站需要的信息-->  
     <site> 
       <!--部署位置的唯一标识符，用来匹配站点和settings.xml文件里的配置-->  
@@ -469,4 +469,3 @@ converted（仓库管理员从 Maven 1 POM转换过来），partner（直接从�
   <properties/> 
 </project>
 ```
-

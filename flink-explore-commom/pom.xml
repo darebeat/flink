@@ -3,13 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>flink</artifactId>
+        <artifactId>flink-explore</artifactId>
         <groupId>org.darebeat</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>flink-commom</artifactId>
+    <artifactId>flink-explore-commom</artifactId>
     <dependencies>
         <dependency>
             <groupId>joda-time</groupId>
@@ -22,6 +22,4 @@
             <version>4.5.2</version>
         </dependency>
     </dependencies>
-
-
 </project>

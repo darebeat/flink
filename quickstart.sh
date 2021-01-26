@@ -21,14 +21,14 @@
 
 PACKAGE=quickstart
 
-mvn archetype:generate								\
-  -DarchetypeGroupId=org.apache.flink				\
-  -DarchetypeArtifactId=flink-quickstart-java		\
-  -DarchetypeVersion=${1:-1.12.0}					\
-  -DgroupId=org.myorg.quickstart					\
-  -DartifactId=$PACKAGE								\
-  -Dversion=0.1										\
-  -Dpackage=org.myorg.quickstart					\
+mvn archetype:generate \
+  -DarchetypeGroupId=org.apache.flink \
+  -DarchetypeArtifactId=flink-quickstart-java \
+  -DarchetypeVersion=${1:-1.11.2} \
+  -DgroupId=org.darebeat.${PACKAGE:-test} \
+  -DartifactId=${PACKAGE:-test} \
+  -Dversion=0.1 \
+  -Dpackage=org.darebeat.${PACKAGE:-test} \
   -DinteractiveMode=false
 
 #

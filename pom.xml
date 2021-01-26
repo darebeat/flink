@@ -3,15 +3,15 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.darebeat</groupId>
-  <artifactId>flink</artifactId>
+  <artifactId>flink-explore</artifactId>
   <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
 
   <modules>
-    <module>flink-streaming</module>
-    <module>flink-source</module>
-      <module>flink-sink</module>
-      <module>flink-commom</module>
+    <module>flink-explore-streaming</module>
+    <module>flink-explore-source</module>
+    <module>flink-explore-sink</module>
+    <module>flink-explore-commom</module>
   </modules>
 
   <properties>
@@ -22,7 +22,7 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <log4j.version>2.12.1</log4j.version>
+    <log4j.version>2.12.1</log4j.version>
   </properties>
 
   <dependencies>

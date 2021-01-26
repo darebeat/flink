@@ -1,7 +1,7 @@
 version: '3'
 services:
   jobmanager:
-    image: darebeat/flink:${FLINK_VERSION:-1.12.0-scala_2.11}
+    image: ${FLINK_IMAGE_NAME:-darebeat/flink}:${FLINK_VERSION:-1.12.0-scala_2.11}
     container_name: flink-jobmanager
     hostname: jobmanager
     networks:
@@ -29,7 +29,7 @@ services:
       - ./config/flink-jars/:/opt/flink/connector-lib/
 
   taskmanager:
-    image: darebeat/flink:${FLINK_VERSION:-1.12.0-scala_2.11}
+    image: ${FLINK_IMAGE_NAME:-darebeat/flink}:${FLINK_VERSION:-1.12.0-scala_2.11}
     container_name: flink-taskmanager
     hostname: taskmanager
     networks:

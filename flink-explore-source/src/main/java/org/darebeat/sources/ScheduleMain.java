@@ -9,7 +9,7 @@ import org.darebeat.common.model.MetricEvent;
 import org.darebeat.sources.model.Rule;
 import org.darebeat.common.utils.ExecutionEnvUtil;
 import org.darebeat.common.utils.KafkaConfigUtil;
-import org.darebeat.sources.utils.MySQLUtil;
+import org.darebeat.sources.utils.MySQLSourceUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -67,7 +67,7 @@ public class ScheduleMain {
             System.out.println("-----get rule");
             String sql = "select * from rule";
 
-            Connection connection = MySQLUtil.getConnection("com.mysql.jdbc.Driver",
+            Connection connection = MySQLSourceUtil.getConnection("com.mysql.jdbc.Driver",
                     "jdbc:mysql://127.0.0.1:13306/test?useUnicode=true&characterEncoding=UTF-8",
                     "root",
                     "mysql");

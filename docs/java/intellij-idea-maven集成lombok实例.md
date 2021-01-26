@@ -2,7 +2,7 @@
 
 lombok 通过简单注解方式简化java代码。（如消除实体对象的get/setter方法、日志对象声明等...）
 
-## 安装步骤：
+## IDEA安装步骤：
 
 + 1、选择支持注解处理：Settings-->Build-->Annotation Processors-->勾选上Enable annotation processing
 
@@ -32,7 +32,7 @@ lombok 通过简单注解方式简化java代码。（如消除实体对象的get
 
 ## Lombok注解的使用
 
-#### 1. POJO类常用注解
+### 1. POJO类常用注解
 
 ```java
 import lombok.*;
@@ -92,7 +92,7 @@ public class Test {
 
 作用于类上，生成日志变量。针对不同的日志实现产品，有不同的注解：
 
-#### 2. 其他重要注解
+### 2. 其他重要注解
 
 + 1. @Cleanup：
 
